@@ -1,0 +1,30 @@
+.row
+  .col-xs-6.col-xs-offset-3.col-md-6.col-md-offset-3#blog-owner-avatar.text-center
+    = image_tag current_site.the_post('home-page').the_field('avatar'), class: 'img-circle img-responsive'
+
+.row
+  .col-xs-12.col-md-10.col-md-offset-1#blog-owner-info.text-center
+    %h3= current_site.the_post('home-page').the_field('name')
+    %hr
+    %h4= current_site.the_post('home-page').the_field('job-title')
+.row
+  .col-xs-12.col-md-8.col-md-offset-2
+    = image_tag current_site.the_logo, class: 'img-responsive'
+.row
+  .col.xs.12.col-md-12#blog-owner-contact-info
+    %h2
+      %span
+        = link_to current_site.the_post('contact-us').the_field('facebook-url') do
+          %i.fa.fa-facebook-official
+      %span
+        = link_to current_site.the_post('contact-us').the_field('twitter-url') do
+          %i.fa.fa-twitter-square
+      %span
+        = link_to current_site.the_post('contact-us').the_field('google-plus') do
+          %i.fa.fa-google-plus-square
+    %p
+      %i.fa.fa-envelope
+      = current_site.the_post('contact-us').the_field('email')
+    %p
+      %i.fa.fa-phone-square
+      = current_site.the_post('contact-us').the_field('first-phone-number')

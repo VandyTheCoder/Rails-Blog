@@ -1,0 +1,14 @@
+.row
+  .col-xs-12#blog-post-item
+    %h1
+      %i.fa.fa-comments
+      Contact Us
+    %hr
+    .row
+      .col-xs-8
+        %form{:action => "https://formspree.io/#{current_site.the_post('contact-us').the_field('email')}", :method => "POST"}
+          %input.form-control{:name => "name", :type => "text", placeholder: "Name"}
+          %br
+          %input.form-control{:name => "_replyto", :type => "email", placeholder: "Email"}
+          %hr
+          %input.btn.btn-success{:type => "submit", :value => "Send"}

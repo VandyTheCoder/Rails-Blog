@@ -1,0 +1,27 @@
+.row
+  .col-xs-12#blog-post-item
+    %h1
+      %i.fa.fa-newspaper-o
+      = @post.title
+    %hr
+    .thumbnail
+      = image_tag @post.the_field('image-content')
+      .caption
+        %hr
+        %p= @post.content_filtered
+        %p= raw @post.the_field('full-content')
+        %hr
+        %p
+          Author :
+          %b= @post.the_field('author-name')
+        %p
+          Reference :
+          %b= @post.the_field('reference-url')
+        %p
+          Posted At :
+          %b= @post.created_at
+        %hr
+        %div
+          = link_to current_site.the_post('home-page').the_url, class: 'btn btn-default btn-outline' do
+            %i.fa.fa-chevron-left
+            Back

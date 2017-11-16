@@ -1,0 +1,23 @@
+!!!
+%html{:lang => "en"}
+  %head
+    / META SECTION
+    %title= current_site.the_title
+    %meta{:content => "text/html; charset=utf-8", "http-equiv" => "Content-Type"}/
+    %meta{:content => "IE=edge", "http-equiv" => "X-UA-Compatible"}/
+    %meta{:content => "width=device-width, initial-scale=1", :name => "viewport"}/
+    / END META SECTION
+
+    = stylesheet_link_tag theme_asset_path("css/main")
+    = javascript_include_tag theme_asset_path("js/main.js")
+    = raw the_head
+
+  %body
+    .container-fluid
+      .row
+        .col-xs-12.col-md-3.hidden-xs#blog-owner-profile{style: "background-image: url(#{current_site.the_post('home-page').the_field('cover')}"}
+          = render 'partials/profile'
+        .col-xs-12.col-md-9.col-md-offset-3
+          = render 'partials/navbar_home'
+
+          = yield

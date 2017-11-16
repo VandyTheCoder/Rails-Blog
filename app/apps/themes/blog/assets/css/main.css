@@ -1,0 +1,142 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require camaleon_cms/bootstrap.min.css
+ *= require font-awesome
+ */
+a{
+  text-decoration: none;
+  color: white;
+}
+/* .container-fluid{
+  padding-left: 0px;
+  padding-right: 0px;
+} */
+#blog-owner-profile{
+  height: 100vh;
+  position: fixed;
+  background-position: 75% 25%;
+}
+#blog-owner-avatar{
+  padding-top: 75px;
+}
+#blog-owner-info{
+  color: white;
+}
+#blog-owner-post{
+  padding-top: 25px;
+  overflow: auto;
+  max-height: 100vh;
+}
+.nav
+{
+  border: none;
+  border-bottom: 1px solid #AAA;
+}
+.nav > li > a
+{
+  text-decoration: none;
+  color: #222222;
+}
+#blog-menu{
+  background-color: initial;
+  color: 222222;
+}
+#blog-owner-contact-info{
+  margin-left: 25px;
+  color: white;
+  position: fixed;
+  bottom: 0;
+  margin-bottom: 25px;
+}
+.btn-outline {
+  background-color: transparent;
+  color: inherit;
+  transition: all .5s;
+}
+.btn
+{
+  border-radius: 0px; 
+}
+.btn-primary.btn-outline {
+  color: #428bca;
+}
+
+.btn-success.btn-outline {
+  color: #5cb85c;
+}
+
+.btn-info.btn-outline {
+  color: #5bc0de;
+}
+
+.btn-warning.btn-outline {
+  color: #f0ad4e;
+}
+
+.btn-danger.btn-outline {
+  color: #d9534f;
+}
+
+.btn-primary.btn-outline:hover,
+.btn-success.btn-outline:hover,
+.btn-info.btn-outline:hover,
+.btn-warning.btn-outline:hover,
+.btn-danger.btn-outline:hover {
+  color: #fff;
+}
+.thumbnail
+{
+  border: none;
+}
+::-webkit-scrollbar { 
+  display: none; 
+}
+#search-input{
+  border: none;
+  border-color: none;
+  box-shadow: none;
+}
+#search-form
+{
+  padding: 0px;
+  border-bottom: 1px solid #DDD;
+  padding-left: 0px;
+}
+#search-form::-webkit-input-placeholder { /* WebKit browsers */
+  line-height: 1.5em;
+}
+#search-input:focus{
+  outline:none;
+  box-shadow: none;
+}
+#search-btn{
+  border: none;
+}
+#blog-post-item
+{
+  padding-top: 5px;
+  padding-left: 60px;
+}
+.panel-title
+{
+  font-size: 25px;
+}
+.panel-title:hover{
+  text-decoration: none;
+}
+body
+{
+  color: #666;
+}
+.thumbnail .caption
+{
+  padding: 0px;
+}

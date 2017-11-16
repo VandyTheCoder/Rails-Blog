@@ -1,0 +1,15 @@
+%nav.navbar#blog-menu
+  .container-fluid
+    .navbar-header
+      %button.navbar-toggle.collapsed{"aria-expanded" => "false", "data-target" => "#bs-example-navbar-collapse-1", "data-toggle" => "collapse", :type => "button"}
+        %span.sr-only Toggle navigation
+        %span Menu
+    #bs-example-navbar-collapse-1.collapse.navbar-collapse
+
+      %form.navbar-form.navbar-left
+        .form-group#search-form
+          %input.form-control#search-input{:placeholder => "Search", :type => "text"}
+          %button.btn.btn-default#search-btn
+            %i.fa.fa-search
+
+      = raw blog_get_nav_menu('main_menu', 'nav navbar-nav navbar-right')

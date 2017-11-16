@@ -1,0 +1,31 @@
+.row
+  .col-xs-12#blog-post-item
+    %h1
+      %i.fa.fa-home
+      Home Page
+    %hr
+    - current_site.the_post_type('blog-post').the_posts.visible_frontend.decorate.reverse.each do |post|
+      .row
+        .col-xs-12
+          .thumbnail
+            = image_tag post.the_field('image-content')
+            .caption
+              %h3
+                %i.fa.fa-newspaper-o
+                = post.the_title
+              %hr
+              %p= post.content_filtered
+              %p
+                Author :
+                %b= post.the_field('author-name')
+              %p
+                Reference :
+                %b= post.the_field('reference-url')
+              %p
+                Posted At :
+                %b= post.created_at
+
+              = link_to post.the_url, class: 'btn btn-primary btn-outline' do
+                Read More
+                %i.fa.fa-chevron-right
+      %hr
