@@ -4,12 +4,16 @@
       %button.navbar-toggle.collapsed{"aria-expanded" => "false", "data-target" => "#bs-example-navbar-collapse-1", "data-toggle" => "collapse", :type => "button"}
         %span.sr-only Toggle navigation
         %span Menu
+      %a.navbar-brand{:href => "#", :onclick => "openNav()"}
+        = image_tag current_site.the_logo, size: '35x35'
+
     #bs-example-navbar-collapse-1.collapse.navbar-collapse
 
       %form.navbar-form.navbar-left
-        .form-group#search-form
-          %input.form-control#search-input{:placeholder => "Search", :type => "text"}
-          %button.btn.btn-default#search-btn
-            %i.fa.fa-search
+        .input-group
+          %input.form-control#search-form{:placeholder => "Search for...", :type => "text"}/
+          %span.input-group-btn
+            %button.btn.btn-default{:type => "button"}
+              %i.fa.fa-search
 
       = raw blog_get_nav_menu('main_menu', 'nav navbar-nav navbar-right')

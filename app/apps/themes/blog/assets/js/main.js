@@ -12,3 +12,10 @@
 //
 //= require jquery
 //= require camaleon_cms/bootstrap.min.js
+function openNav() {
+    document.getElementById("blog-owner-profile").style.width = "100%";
+}
+
+function closeNav() {
+    document.getElementById("blog-owner-profile").style.width = "0%";
+}
