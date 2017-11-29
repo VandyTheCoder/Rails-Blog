@@ -13,7 +13,7 @@ module Themes::Blog::MainHelper
     blog_add_fields_to_home_page
     blog_add_fields_to_about_us_page
     blog_add_fields_to_contact_us_page
-    blog_add_fields_to_blog_post
+    blog_add_blog_post_type
   end
 
   # callback executed after theme uninstalled
@@ -75,14 +75,29 @@ module Themes::Blog::MainHelper
     end
   end
 
-  def blog_add_fields_to_blog_post
-    post = current_site.the_post_type('blog-post')
-    if post.get_field_groups.where(slug: '_group-posts').blank?
-      blog_post_field = post.add_field_group({ name: "Blog Post", slug: '_group-posts' })
-      blog_post_field.add_field({ name: 'Reference URL', slug: 'reference-url' }, { field_key: 'text_box', required: true, default_value: "https://www."})
-      blog_post_field.add_field({ name: 'Image Content', slug: 'image-content' }, { field_key: 'image', required: true})
-      blog_post_field.add_field({ name: "Author's Name", slug: "author-name" }, { field_key: 'text_box', required: true, default_value: "Mr./Mrs."})
-      blog_post_field.add_field({ name: "Full Content", slug: "full-content" }, { field_key: 'editor', required: true, default_value: "Full Content For Posts"})
+  def blog_add_blog_post_type
+    if current_site.the_post_type('blog-post').blank?
+      blog_post = current_site.post_types.create(name: 'Blog Post', slug: 'blog-post')
+      options = {
+        has_category: true,
+        has_content: true,
+        has_tags: false,
+        has_summary: false,
+        has_comments: false,
+        has_picture: false,
+        has_template: false,
+        has_keywords: false,
+        contents_route_format: 'post_of_posttype'
+      }
+      blog_post.set_meta('_default', options)
+
+      if blog_post.get_field_groups.where(slug: '_group-posts').blank?
+        blog_post_field = blog_post.add_field_group({ name: "Blog Post", slug: '_group-posts' })
+        blog_post_field.add_field({ name: 'Reference URL', slug: 'reference-url' }, { field_key: 'text_box', required: true, default_value: "https://www."})
+        blog_post_field.add_field({ name: 'Image Content', slug: 'image-content' }, { field_key: 'image', required: true})
+        blog_post_field.add_field({ name: "Author's Name", slug: "author-name" }, { field_key: 'text_box', required: true, default_value: "Mr./Mrs."})
+        blog_post_field.add_field({ name: "Full Content", slug: "full-content" }, { field_key: 'editor', required: true, default_value: "Full Content For Posts"})
+      end
     end
   end
 
