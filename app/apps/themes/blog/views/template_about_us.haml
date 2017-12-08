@@ -17,10 +17,10 @@
         %h4.panel-title
           %a{"aria-controls" => "collapseOne", "aria-expanded" => "true", "data-parent" => "#accordion", "data-toggle" => "collapse", :href => "#collapseOne", :role => "button"}
             %i.fa.fa-bookmark
-            = current_site.the_post("about-us").the_field("first-section-label")
+            = current_site.the_post("about-us").the_field("first-section-label-about-us")
       #collapseOne.panel-collapse.collapse.in{"aria-labelledby" => "headingOne", :role => "tabpanel"}
         .panel-body
-          %p= current_site.the_post("about-us").the_field("first-section-description").html_safe
+          %p= current_site.the_post("about-us").the_field("first-section-description-about-us").html_safe
         %hr
       
       %br
@@ -29,10 +29,10 @@
         %h4.panel-title
           %a.collapsed{"aria-controls" => "collapseTwo", "aria-expanded" => "true", "data-parent" => "#accordion1", "data-toggle" => "collapse", :href => "#collapseTwo", :role => "button"}
             %i.fa.fa-bookmark
-            = current_site.the_post("about-us").the_field("second-section-label")
+            = current_site.the_post("about-us").the_field("second-section-label-about-us")
       #collapseTwo.panel-collapse.collapse.in{"aria-labelledby" => "headingTwo", :role => "tabpanel"}
         .panel-body
-          %p= current_site.the_post("about-us").the_field("second-section-description").html_safe
+          %p= current_site.the_post("about-us").the_field("second-section-description-about-us").html_safe
         %hr
       
       %br
@@ -41,8 +41,8 @@
         %h4.panel-title
           %a.collapsed{"aria-controls" => "collapseThree", "aria-expanded" => "true", "data-parent" => "#accordion2", "data-toggle" => "collapse", :href => "#collapseThree", :role => "button"}
             %i.fa.fa-bookmark
-            = current_site.the_post("about-us").the_field("third-section-label")
+            = current_site.the_post("about-us").the_field("third-section-label-about-us")
       #collapseThree.panel-collapse.collapse{"aria-labelledby" => "headingThree", :role => "tabpanel"}
         .panel-body
-          %p= current_site.the_post("about-us").the_field("third-section-description").html_safe
+          %p= current_site.the_post("about-us").the_field("third-section-description-about-us").html_safe
         %hr

@@ -5,18 +5,18 @@
       = @post.title
     %hr
     .thumbnail
-      = image_tag @post.the_field('image-content')
+      = image_tag @post.the_field('image-content-blog-post')
       .caption
         %hr
         %p= @post.content_filtered
-        %p= raw @post.the_field('full-content')
+        %p= raw @post.the_field('full-content-blog-post')
         %hr
         %p
           Author :
-          %b= @post.the_field('author-name')
+          %b= @post.the_field('author-name-blog-post')
         %p
           Reference :
-          %b= @post.the_field('reference-url')
+          %b= @post.the_field('reference-url-blog-post')
         %p
           Posted At :
           %b= @post.created_at

@@ -12,8 +12,8 @@ module Themes::Blog::MainHelper
     blog_add_default_pages
     blog_add_fields_to_home_page
     blog_add_fields_to_about_us_page
-    blog_add_fields_to_contact_us_page
     blog_add_blog_post_type
+    blog_add_customize_theme_setting(theme)
   end
 
   # callback executed after theme uninstalled
@@ -39,39 +39,27 @@ module Themes::Blog::MainHelper
     page = current_site.the_post_type('page').the_post('home-page')
     if page.get_field_groups.where(slug: '_group-blog-owner-s-detail').blank?
       blog_owner_detail_field = page.add_field_group({ name: "Blog Owner's Detail", slug: '_group-blog-owner-s-detail' })
-      blog_owner_detail_field.add_field({ name: 'Name', slug: 'name' }, { field_key: 'text_box', required: true, default_value: "Owner's Name"})
-      blog_owner_detail_field.add_field({ name: 'Job Title', slug: 'job-title' }, { field_key: 'text_box', required: true, default_value: "Owner's Job Title"})
-      blog_owner_detail_field.add_field({ name: 'Avatar', slug: 'avatar' }, { field_key: 'image', required: true})
-      blog_owner_detail_field.add_field({ name: 'Cover', slug: 'cover' }, { field_key: 'image', required: true})
+      blog_owner_detail_field.add_field({ name: 'Name',         slug: 'name-home-page' },       { field_key: 'text_box', required: true, default_value: "Owner's Name"})
+      blog_owner_detail_field.add_field({ name: 'Job Title',    slug: 'job-title-home-page' },  { field_key: 'text_box', required: true, default_value: "Owner's Job Title"})
+      blog_owner_detail_field.add_field({ name: 'Avatar',       slug: 'avatar-home-page' },     { field_key: 'image', required: true})
+      blog_owner_detail_field.add_field({ name: 'Cover',        slug: 'cover-home-page' },      { field_key: 'image', required: true})
     end
   end
 
   def blog_add_fields_to_about_us_page
     page = current_site.the_post_type('page').the_post('about-us')
     if page.get_field_groups.where(slug: '_group-blog-about-us').blank?
+
       blog_about_us_field = page.add_field_group({ name: "About Us", slug: '_group-blog-about-us' })
 
-      blog_about_us_field.add_field({ name: 'First Section Label', slug: 'first-section-label' }, { field_key: 'text_box', required: true, default_value: "Experience"})
-      blog_about_us_field.add_field({ name: 'First Section Description', slug: 'first-section-description' }, { field_key: 'editor', required: true, default_value: "Description"})
+      blog_about_us_field.add_field({ name: 'First Section Label',          slug: 'first-section-label-about-us' },         { field_key: 'text_box', required: true, default_value: "Experience"})
+      blog_about_us_field.add_field({ name: 'First Section Description',    slug: 'first-section-description-about-us' },   { field_key: 'editor', required: true, default_value: "Description"})
 
-      blog_about_us_field.add_field({ name: 'Second Section Label', slug: 'second-section-label' }, { field_key: 'text_box', required: true, default_value: "Education"})
-      blog_about_us_field.add_field({ name: 'Second Section Description', slug: 'second-section-description' }, { field_key: 'editor', required: true, default_value: "Description"})
+      blog_about_us_field.add_field({ name: 'Second Section Label',         slug: 'second-section-label-about-us' },        { field_key: 'text_box', required: true, default_value: "Education"})
+      blog_about_us_field.add_field({ name: 'Second Section Description',   slug: 'second-section-description-about-us' },  { field_key: 'editor', required: true, default_value: "Description"})
 
-      blog_about_us_field.add_field({ name: 'Third Section Label', slug: 'third-section-label' }, { field_key: 'text_box', required: true, default_value: "Accomplishment"})
-      blog_about_us_field.add_field({ name: 'Third Section Description', slug: 'third-section-description' }, { field_key: 'editor', required: true, default_value: "Description"})
-    end
-  end
-
-  def blog_add_fields_to_contact_us_page
-    page = current_site.the_post_type('page').the_post('contact-us')
-    if page.get_field_groups.where(slug: '_group-blog-owner-s-contact-information').blank?
-      blog_contact_us_field = page.add_field_group({ name: "Blog Owner's Contact Information", slug: '_group-blog-owner-s-contact-information' })
-      blog_content_us_field.add_field({ name: 'Facebook URL', slug: 'facebook-url'}, {field_key: 'url', required: 'true', default_value: "https://www.facebook.com/"})
-      blog_content_us_field.add_field({ name: 'Twitter URL', slug: 'twitter-url'}, {field_key: 'url', required: 'false', default_value: "https://www.twitter.com/"})
-      blog_content_us_field.add_field({ name: 'Google Plus URL', slug: 'google-plus-url'}, {field_key: 'url', required: 'false', default_value: "https://www.google.com/"})
-      blog_content_us_field.add_field({ name: 'Email', slug: 'email'},{field_key: 'email', required: 'true', default_value: "@example.com"})
-      blog_content_us_field.add_field({ name: 'First Phone Number', slug: 'first-phone-number'},{field_key: 'phone', required: 'true', default_value: "+855"})
-      blog_content_us_field.add_field({ name: 'Second Phone Number', slug: 'second-phone-number'},{field_key: 'phone', required: 'true', default_value: "+855"})
+      blog_about_us_field.add_field({ name: 'Third Section Label',          slug: 'third-section-label-about-us' },         { field_key: 'text_box', required: true, default_value: "Accomplishment"})
+      blog_about_us_field.add_field({ name: 'Third Section Description',    slug: 'third-section-description-about-us' },   { field_key: 'editor', required: true, default_value: "Description"})
     end
   end
 
@@ -91,13 +79,29 @@ module Themes::Blog::MainHelper
       }
       blog_post.set_meta('_default', options)
 
-      if blog_post.get_field_groups.where(slug: '_group-posts').blank?
+      if blog_post.get_field_groups.where(slug: '_group-blog-posts').blank?
         blog_post_field = blog_post.add_field_group({ name: "Blog Post", slug: '_group-posts' })
-        blog_post_field.add_field({ name: 'Reference URL', slug: 'reference-url' }, { field_key: 'text_box', required: true, default_value: "https://www."})
-        blog_post_field.add_field({ name: 'Image Content', slug: 'image-content' }, { field_key: 'image', required: true})
-        blog_post_field.add_field({ name: "Author's Name", slug: "author-name" }, { field_key: 'text_box', required: true, default_value: "Mr./Mrs."})
-        blog_post_field.add_field({ name: "Full Content", slug: "full-content" }, { field_key: 'editor', required: true, default_value: "Full Content For Posts"})
+        blog_post_field.add_field({ name: 'Reference URL',    slug: 'reference-url-blog-post' },  { field_key: 'text_box', required: true, default_value: "https://www."})
+        blog_post_field.add_field({ name: 'Image Content',    slug: 'image-content-blog-post' },  { field_key: 'image', required: true})
+        blog_post_field.add_field({ name: "Author's Name",    slug: "author-name-blog-post" },    { field_key: 'text_box', required: true, default_value: "Mr./Mrs."})
+        blog_post_field.add_field({ name: "Full Content",     slug: "full-content-blog-post" },   { field_key: 'editor', required: true, default_value: "Full Content For Posts"})
       end
+    end
+  end
+
+  def blog_add_customize_theme_setting(theme)
+    if theme.get_field_groups.where(slug: 'social-media').blank?
+      group = theme.add_field_group({ name: 'Social Media', slug: 'social-media' })
+      group.add_field({ name: 'Facebook Url',   slug: 'facebook-url-setting' },   { field_key: 'url', default_value: 'https://www.facebook.com/' })
+      group.add_field({ name: 'Twitter Url',    slug: 'twitter-url-setting' },    { field_key: 'url' , default_value: 'https://twitter.com/?lang=en'})
+      group.add_field({ name: 'Tumblr Url',     slug: 'tumblr-url-setting' },     { field_key: 'url', default_value: 'https://www.tumblr.com/' })
+      group.add_field({ name: 'Youtube Url',    slug: 'youtube-url-setting' },    { field_key: 'url', default_value: 'https://www.youtube.com/' })
+    end
+    if theme.get_field_groups.where(slug: 'contact-information').blank?
+      group = theme.add_field_group({ name: 'Contact Information', slug: 'contact-information' })
+      group.add_field({ name: 'Email',                slug: 'email-setting'},               {field_key: 'email', required: 'true', default_value: "@example.com"})
+      group.add_field({ name: 'First Phone Number',   slug: 'first-phone-number-setting'},  {field_key: 'phone', required: 'true', default_value: "+855"})
+      group.add_field({ name: 'Second Phone Number',  slug: 'second-phone-number-setting'}, {field_key: 'phone', required: 'true', default_value: "+855"})
     end
   end
 
@@ -118,4 +122,5 @@ module Themes::Blog::MainHelper
     }
     draw_menu(option)
   end
+
 end

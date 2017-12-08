@@ -6,7 +6,7 @@
     %hr
     .row
       .col-xs-12.col-md-7#contact-cotainer
-        %form#contact-form{:action => "https://formspree.io/#{current_site.the_post('contact-us').the_field('email')}", :method => "POST"}
+        %form#contact-form{:action => "https://formspree.io/#{current_theme.the_field('email-setting')}", :method => "POST"}
           .row
             .col-xs-12.col-md-12
               %input.form-control{:name => "Name", :type => "text", placeholder: "Name"}
@@ -31,6 +31,6 @@
         = image_tag current_site.the_logo, style: "width: 50%"
         %hr
         %p I am happy to contact you back in any case. Please feel free to send me a message. I am looking forward to for your message.
-        %a#call-link{:href => "tel:#{@post.the_field('first-phone-number')}"}
+        %a#call-link{:href => "tel:#{current_theme.the_field('first-phone-number-setting')}"}
           Call me at
-          = @post.the_field('first-phone-number')
+          = current_theme.the_field('first-phone-number-setting')

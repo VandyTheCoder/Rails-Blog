@@ -1,16 +1,16 @@
 .row#close-btn
   .col-xs-12.text-right
     %a#close-link{:href => "javascript:void(0)", :onclick => "closeNav()"}
-      %i.fa.fa-arrow-right
+      %i.fa.fa-arrow-left
 .row
   .col-xs-6.col-xs-offset-3.col-md-6.col-md-offset-3#blog-owner-avatar.text-center
-    = image_tag current_site.the_post('home-page').the_field('avatar'), class: 'img-circle img-responsive'
+    = image_tag current_site.the_post('home-page').the_field('avatar-home-page'), class: 'img-circle img-responsive'
 
 .row
   .col-xs-12.col-md-10.col-md-offset-1#blog-owner-info.text-center
-    %h3= current_site.the_post('home-page').the_field('name')
+    %h3= current_site.the_post('home-page').the_field('name-home-page')
     %hr
-    %h4= current_site.the_post('home-page').the_field('job-title')
+    %h4= current_site.the_post('home-page').the_field('job-title-home-page')
 .row
   .col-xs-6.col-xs-offset-3.col-md-8.col-md-offset-2#blog-owner-logo.text-center
     = image_tag current_site.the_logo, class: 'img-responsive'
@@ -18,17 +18,17 @@
   .col.xs.12.col-md-12#blog-owner-contact-info
     %h2
       %span
-        = link_to current_site.the_post('contact-us').the_field('facebook-url') do
+        = link_to current_theme.the_field('facebook-url-setting') do
           %i.fa.fa-facebook-official
       %span
-        = link_to current_site.the_post('contact-us').the_field('twitter-url') do
+        = link_to current_theme.the_field('twitter-url-setting') do
           %i.fa.fa-twitter-square
       %span
-        = link_to current_site.the_post('contact-us').the_field('google-plus') do
+        = link_to current_theme.the_field('youtube-url-setting') do
           %i.fa.fa-google-plus-square
     %p
       %i.fa.fa-envelope
-      = current_site.the_post('contact-us').the_field('email')
+      = current_theme.the_field('email-setting')
     %p
       %i.fa.fa-phone-square
-      = current_site.the_post('contact-us').the_field('first-phone-number')
+      = current_theme.the_field('first-phone-number-setting')

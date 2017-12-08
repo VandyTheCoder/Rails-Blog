@@ -8,7 +8,7 @@
       .row
         .col-xs-12
           .thumbnail
-            = image_tag post.the_field('image-content')
+            = image_tag post.the_field('image-content-blog-post')
             .caption
               %h3
                 %i.fa.fa-newspaper-o
@@ -17,10 +17,10 @@
               %p= post.content_filtered
               %p
                 Author :
-                %b= post.the_field('author-name')
+                %b= post.the_field('author-name-blog-post')
               %p
                 Reference :
-                %b= post.the_field('reference-url')
+                %b= post.the_field('reference-url-blog-post')
               %p
                 Posted At :
                 %b= post.created_at
