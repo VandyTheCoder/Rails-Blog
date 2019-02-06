@@ -22,7 +22,7 @@
           .row
             .col-xs-12.col-md-12
               %textarea.form-control{:name => "Message", placeholder: "Message", rows: "10"}
-          %hr
+          %hr.contact-divider
           %button.btn.btn-primary{:type => "submit"}
             %i.fa.fa-envelope-o
             Send Message
@@ -33,4 +33,5 @@
         %p I am happy to contact you back in any case. Please feel free to send me a message. I am looking forward to for your message.
         %a#call-link{:href => "tel:#{current_theme.the_field('first-phone-number-setting')}"}
           Call me at
-          = current_theme.the_field('first-phone-number-setting')
+          %b
+            = current_theme.the_field('first-phone-number-setting')

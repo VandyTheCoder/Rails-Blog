@@ -12,8 +12,8 @@
     %hr
     %h4= current_site.the_post('home-page').the_field('job-title-home-page')
 .row
-  .col-xs-6.col-xs-offset-3.col-md-8.col-md-offset-2#blog-owner-logo.text-center
-    = image_tag current_site.the_logo, class: 'img-responsive'
+  .col-xs-12#blog-owner-logo.text-center
+    = image_tag current_site.the_logo, size: "150x170"
 .row
   .col.xs.12.col-md-12#blog-owner-contact-info
     %h2
@@ -32,3 +32,7 @@
     %p
       %i.fa.fa-phone-square
       = current_theme.the_field('first-phone-number-setting')
+    %p
+      %i.fa.fa-copyright
+      = "#{Date.today.year} -"
+      = current_site.the_post('home-page').the_field('name-home-page')+"."

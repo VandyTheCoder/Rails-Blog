@@ -23,6 +23,7 @@
 }
 .navbar-form{
   padding-left: 0px;
+  padding-right: 0px;
 }
 @media (min-width: 768px){
   .navbar-brand{
@@ -40,4 +41,32 @@
 #search-form:focus{
   outline:none;
   box-shadow: none;
+}
+
+.navbar-brand{
+  color: #666666;
+  img {
+    display: initial;
+  }
+}
+
+#navbar-dropdown-btn{
+  margin-top: 11px;
+}
+
+.navbar-header{
+  border-bottom: 1px solid #d4d4d4;
+}
+
+.nav-search{
+  @media #{$desktop-up} {
+    width: 450px;
+    padding-left: 0px;
+  }
+}
+
+.navbar-collapse{
+  @media #{$desktop-up} {
+    padding-left: 0px;
+  }
 }

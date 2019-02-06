@@ -1,10 +1,18 @@
 .row
   .col-xs-12#blog-post-item
     %h1
-      Home Page
-      %i.fa.fa-rss
+      - if @posts.count > 0
+        %i.fa.fa-search
+        = "Search: \"#{params[:q]}\""
+        %span.search-result
+          %b
+            = "#{@posts.count}"
+          Results
+      - else
+        %i.fa.fa-search
+        = "No Contents Found!"
     %hr
-    - current_site.the_post_type('blog-post').the_posts.visible_frontend.decorate.reverse.each do |post|
+    - @posts.visible_frontend.decorate.reverse.each do |post|
       .row
         .col-xs-12
           .thumbnail
@@ -14,7 +22,7 @@
                 %i.fa.fa-newspaper-o
                 = post.the_title
               %hr.blog-title-divider
-              %p= post.content_filtered
+              = simple_format post.the_content
               %p
                 Author :
                 %b= post.the_field('author-name-blog-post')
@@ -24,8 +32,7 @@
               %p
                 Posted At :
                 %b= post.created_at
-            %hr
-            %div.text-right
+
               = link_to post.the_url, class: 'btn btn-primary btn-outline' do
                 Read More
                 %i.fa.fa-chevron-right

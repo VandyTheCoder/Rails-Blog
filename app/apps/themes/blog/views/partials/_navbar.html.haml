@@ -1,19 +1,21 @@
 %nav.navbar#blog-menu
   .container-fluid
     .navbar-header
-      %button.navbar-toggle.collapsed{"aria-expanded" => "false", "data-target" => "#bs-example-navbar-collapse-1", "data-toggle" => "collapse", :type => "button"}
+      %button#navbar-dropdown-btn.navbar-toggle.collapsed{"aria-expanded" => "false", "data-target" => "#bs-example-navbar-collapse-1", "data-toggle" => "collapse", :type => "button"}
         %span.sr-only Toggle navigation
         %span Menu
       %a.navbar-brand{:href => "#", :onclick => "openNav()"}
-        = image_tag current_site.the_logo, size: '35x35'
+        = image_tag current_site.the_logo, size: '35x40'
+        = current_site.the_post('home-page').the_field('name-home-page')
 
     #bs-example-navbar-collapse-1.collapse.navbar-collapse
 
-      %form.navbar-form.navbar-left
-        .input-group
-          %input.form-control#search-form{:placeholder => "Search for...", :type => "text"}/
+      %form.navbar-form.navbar-left{"accept-charset" => "UTF-8", :action => "/search", :method => "get"}
+        %input{:name => "utf8", :type => "hidden", :value => "✓"}/
+        .input-group.nav-search
+          %input.form-control#search-form{:placeholder => "Search for...", :type => "text", :name => "q"}/
           %span.input-group-btn
-            %button.btn.btn-default{:type => "button"}
+            %button.btn.btn-default{:type => "submit"}
               %i.fa.fa-search
 
       = raw blog_get_nav_menu('main_menu', 'nav navbar-nav navbar-right')

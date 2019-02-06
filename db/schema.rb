@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171023093618) do
+ActiveRecord::Schema.define(version: 20190128100163) do
 
   create_table "cama_comments", force: :cascade do |t|
     t.string "author"
@@ -61,6 +61,25 @@ ActiveRecord::Schema.define(version: 20171023093618) do
     t.index ["custom_field_slug"], name: "index_cama_custom_fields_relationships_on_custom_field_slug"
     t.index ["object_class"], name: "index_cama_custom_fields_relationships_on_object_class"
     t.index ["objectid"], name: "index_cama_custom_fields_relationships_on_objectid"
+  end
+
+  create_table "cama_media", force: :cascade do |t|
+    t.integer "site_id"
+    t.string "name"
+    t.boolean "is_folder", default: false
+    t.string "folder_path"
+    t.string "file_size"
+    t.string "dimension", default: ""
+    t.string "file_type"
+    t.string "url"
+    t.string "thumb"
+    t.boolean "is_public", default: true
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.index ["folder_path"], name: "index_cama_media_on_folder_path"
+    t.index ["is_folder"], name: "index_cama_media_on_is_folder"
+    t.index ["name"], name: "index_cama_media_on_name"
+    t.index ["site_id"], name: "index_cama_media_on_site_id"
   end
 
   create_table "cama_metas", force: :cascade do |t|
@@ -149,6 +168,16 @@ ActiveRecord::Schema.define(version: 20171023093618) do
     t.index ["role"], name: "index_cama_users_on_role"
     t.index ["site_id"], name: "index_cama_users_on_site_id"
     t.index ["username"], name: "index_cama_users_on_username"
+  end
+
+  create_table "plugins_attacks", force: :cascade do |t|
+    t.string "path"
+    t.string "browser_key"
+    t.integer "site_id"
+    t.datetime "created_at"
+    t.index ["browser_key"], name: "index_plugins_attacks_on_browser_key"
+    t.index ["path"], name: "index_plugins_attacks_on_path"
+    t.index ["site_id"], name: "index_plugins_attacks_on_site_id"
   end
 
   create_table "plugins_contact_forms", force: :cascade do |t|
