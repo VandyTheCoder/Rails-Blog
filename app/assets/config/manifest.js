@@ -1,3 +1,14 @@
 //= link_tree ../images
+//= link_tree ../../apps/themes/blog/assets/images
 //= link_directory ../javascripts .js
 //= link_directory ../stylesheets .css
+//= link_directory ../../apps/themes/blog/assets/css .css
+//= link_directory ../../apps/themes/blog/assets/js .js
+//= link camaleon_cms/image-not-found.png
+//= link camaleon_cms/admin/admin-basic-manifest.css
+//= link camaleon_cms/admin/admin-basic-manifest.js
+//= link camaleon_cms/admin/intro/menus.png
+//= link camaleon_cms/admin/admin-manifest.css
+//= link camaleon_cms/admin/tinymce/langs/en.js
+//= link camaleon_cms/admin/admin-manifest.js
+//= link camaleon_cms/admin/img/no_image.jpg
